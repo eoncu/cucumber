@@ -1,7 +1,6 @@
 package StepDefinations;
 
-import io.cucumber.java.AfterAll;
-import io.cucumber.java.BeforeAll;
+import io.cucumber.java.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Hooks {
@@ -15,7 +14,6 @@ public class Hooks {
     public static void endTest() throws InterruptedException {
         System.out.println("************ End Test");
         //Thread.sleep(2000);
-        DriverSource.INSTANCE.getDriver().manage().window().minimize();
         DriverSource.INSTANCE.getDriver().quit();
     }
 
