@@ -1,40 +1,48 @@
+package StepDefinations;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
-public class LoginTest {
+public class LoginTest extends  BaseTest {
+    private WebDriver driver = new ChromeDriver();
     @Given("User is on login page")
     public void userIsOnLoginPage() {
-        System.out.println("1");
+
+        driver.get("https://www.saucedemo.com/");
     }
 
     @When("User enters valid username")
     public void userEntersValidUsername() {
-        System.out.println("2");
+
+        WebElement userNameInput = driver.findElement(By.xpath("//input[@id='user-name']"));
+        userNameInput.sendKeys("standard_user");
     }
 
     @And("User enters valid password")
     public void userEntersValidPassword() {
-        System.out.println("3");
-    }
 
+        WebElement passwordInput = driver.findElement(By.xpath("//input[@id='password']"));
+        passwordInput.sendKeys("secret_sauce");
+    }
+    @And("user cliks login button")
+    public void userCliksLoginButton() {
+        WebElement loginBtn = driver.findElement(By.xpath("//input[@id='login-button']"));
+        loginBtn.click();
+    }
     @Then("User schould succesfully login the system")
     public void userSchouldSuccesfullyLoginTheSystem() {
-        System.out.println("4");
-    }
-}
-/*
- public void firstTest(){
-    WebDriver driver = new ChromeDriver();
-    driver.get("https://www.saucedemo.com/");
-    WebElement userNameInput = driver.findElement(By.xpath("//input[@id='user-name']"));
-    userNameInput.sendKeys("standard_user");
-    WebElement passwordInput = driver.findElement(By.xpath("//input[@id='password']"));
-    passwordInput.sendKeys("secret_sauce");
-    WebElement loginBtn = driver.findElement(By.xpath("//input[@id='login-button']"));
-    loginBtn.click();
-    driver.quit();
+        Assert.assertFalse(false);
+        driver.quit();
+
 
     }
- */
+
+
+}
