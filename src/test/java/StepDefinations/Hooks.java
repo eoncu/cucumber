@@ -1,7 +1,6 @@
 package StepDefinations;
 
 import io.cucumber.java.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Hooks {
     @BeforeAll
